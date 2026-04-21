@@ -3,23 +3,29 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Virtual environments
-venv/
-.venv/
-env/
-.env/
-
-# Environment variables
-.env
-.env.*
-!.env.example
-
 # OS generated files
 .DS_Store
 Thumbs.db
 
-# IDEs and Editors
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Environment Variables (IMPORTANT: Security)
+.env
+.env.*
+!.env.example
+
+# IDE Files
 .vscode/
 .idea/
 *.swp
 *.swo
+
+# PDF files (often large or data files)
+*.pdf
+
+# Project specific ignores
+project/p1/__pycache__/
+naver/__pycache__/
