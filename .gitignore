@@ -28,4 +28,5 @@ env/
 
 # Project specific ignores
 project/p1/__pycache__/
+project/p1/.index_cache/
 naver/__pycache__/
