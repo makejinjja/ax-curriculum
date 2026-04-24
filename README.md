@@ -111,4 +111,7 @@ decision_ai.py           → RAG + 신경과학 지식베이스
 decision_ai_v2.py        → 고도화 파이프라인 실서비스 적용
 decision_mood_mission.py → 기분전환 미션 + 게임화 (CLI)
 mood_mission_app.py      → Streamlit 웹 UI 버전
+bloom_v1 ~ v9.py         → Bloom 기분 추적 및 카드 게임 도입 / 점진적 고도화
+bloom_gui_v1.py          → CustomTkinter를 활용한 기분/미션 추적 GUI 앱 구현
+decision_mood_mission_rag_v3 ~ v6.py  → RAG 통합을 통해 사용자의 행동 패턴을 반영한 미션 제공
 ```
