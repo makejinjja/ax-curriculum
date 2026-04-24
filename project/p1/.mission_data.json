@@ -1,0 +1,390 @@
+{
+  "fruits": [
+    {
+      "difficulty": "중",
+      "category": "건강",
+      "mission": "댄스하기",
+      "full_mission": "좋아하는 음악을 들으며 30분간 댄스하기",
+      "timestamp": "2026-04-23 11:46",
+      "mood": "슬프다",
+      "time": "30분",
+      "emotion_type": "부정적",
+      "effect": "음악에 따라 움직이면서 기분이 전환되고 스트레스를 줄여주는 효과가 있다. 신체적 활동은 기분을 호전시키는 데 기여할 수 있다.",
+      "success": true,
+      "memo": null,
+      "photo_path": null
+    },
+    {
+      "difficulty": "하",
+      "category": "건강",
+      "mission": "숨 쉬기",
+      "full_mission": "편안한 장소에서 5분간 깊게 숨 쉬기",
+      "timestamp": "2026-04-23 13:27",
+      "mood": "아픔",
+      "time": "10분",
+      "emotion_type": "부정적",
+      "effect": "깊은 호흡은 긴장을 완화하고 기분을 개선하는 데 도움을 줄 수 있습니다. 또한, 스트레스와 불안이 감소하며 마음을 안정시킬 수 있습니다.",
+      "success": true,
+      "memo": null,
+      "photo_path": null
+    },
+    {
+      "difficulty": "중",
+      "category": "성장",
+      "mission": "취미 찾기",
+      "full_mission": "새로운 취미를 찾아 30분동안 해보기",
+      "timestamp": "2026-04-23 13:29",
+      "mood": "행복",
+      "time": "30분",
+      "emotion_type": "긍정적",
+      "effect": "새로운 경험을 통해 즐거움과 성취감을 느끼며, 감정 조절 능력을 향상시킬 수 있다.",
+      "success": true,
+      "memo": null,
+      "photo_path": null
+    },
+    {
+      "difficulty": "중",
+      "category": "성장",
+      "mission": "심호흡하고 긍정쓰기",
+      "full_mission": "5분간 심호흡 후 자신에게 긍정적인 메시지 쓰기",
+      "timestamp": "2026-04-23 13:30",
+      "mood": "열정",
+      "time": "30분",
+      "emotion_type": "집중됨",
+      "effect": "긍정적인 자기 메시지를 통해 감정 조절 능력이 향상되고 스트레스 회복에 기여할 수 있다.",
+      "success": true,
+      "memo": null,
+      "photo_path": null
+    },
+    {
+      "difficulty": "하",
+      "category": "성장",
+      "mission": "산책하기",
+      "full_mission": "주변의 작은 자연을 감상하며 산책하기",
+      "timestamp": "2026-04-23 13:46",
+      "mood": "즐거움",
+      "time": "10분",
+      "emotion_type": "긍정적",
+      "effect": "자연을 감상하는 것은 스트레스를 줄이고 기분을 좋게 하며, 마음의 불안감을 덜어줍니다.",
+      "success": true,
+      "memo": "공원에서 자연감상",
+      "photo_path": null
+    },
+    {
+      "difficulty": "하",
+      "category": "돌발",
+      "mission": "색깔 모으기",
+      "full_mission": "주변에 있는 한 가지 색깔의 물건 모아보기",
+      "timestamp": "2026-04-23 14:20",
+      "mood": "좋음",
+      "time": "20분",
+      "emotion_type": "긍정적",
+      "effect": "색깔의 다양성을 느끼며 즐거운 기분을 얻을 수 있어요!",
+      "success": true,
+      "memo": "빨간색 모음",
+      "photo_path": null
+    },
+    {
+      "difficulty": "상",
+      "category": "재미",
+      "mission": "게임 만들기",
+      "full_mission": "60분 동안 새로운 게임을 만들어 친구들과 함께 플레이해보기",
+      "timestamp": "2026-04-23 14:24",
+      "mood": "재밌음",
+      "time": "60분",
+      "emotion_type": "긍정적",
+      "effect": "친구들과의 협력을 통해 사회적 유대감을 증진하고, 창의성을 발휘함으로써 긍정적인 정서 경험을 증가시킬 수 있다.",
+      "success": true,
+      "memo": "재밌는게임만들기",
+      "photo_path": null
+    },
+    {
+      "difficulty": "하",
+      "category": "재미",
+      "mission": "춤추기",
+      "full_mission": "좋아하는 음악을 들으며 60분 동안 춤추기",
+      "timestamp": "2026-04-23 14:25",
+      "mood": "졸림",
+      "time": "60분",
+      "emotion_type": "부정적",
+      "effect": "음악에 맞춰 몸을 움직이며 긍정적인 에너지를 느끼게 되고, 기분이 좋아질 수 있다. 또한, 신체적 활동은 스트레스 해소에도 도움이 된다.",
+      "success": true,
+      "memo": "음악들음",
+      "photo_path": null
+    },
+    {
+      "difficulty": "하",
+      "category": "돌발",
+      "mission": "따기",
+      "full_mission": "집안의 식물에서 한 잎 따기",
+      "timestamp": "2026-04-23 14:27",
+      "mood": "5",
+      "time": "5분",
+      "emotion_type": "중립",
+      "effect": "자연의 작은 변화를 통해 기분 전환이 가능하다.",
+      "success": true,
+      "memo": "냠냠",
+      "photo_path": null
+    },
+    {
+      "difficulty": "하",
+      "category": "재미",
+      "mission": "보드게임 제작",
+      "full_mission": "새로운 보드게임 만들기",
+      "timestamp": "2026-04-23 14:29",
+      "mood": "행복",
+      "time": "60분",
+      "emotion_type": "긍정적",
+      "effect": "친구들과 함께 새로운 보드게임을 만들면서 협동심이 향상되고, 긍정적인 감정이 증대됩니다.",
+      "success": true,
+      "memo": "겜완성",
+      "photo_path": null
+    },
+    {
+      "difficulty": "상",
+      "category": "성장",
+      "mission": "스케치하기",
+      "full_mission": "40분 동안 새로운 시각으로 일상 풍경 스케치하기",
+      "timestamp": "2026-04-23 14:47",
+      "mood": "열정적임",
+      "time": "40분",
+      "emotion_type": "긍정적",
+      "effect": "창의성과 표현력을 향상시키고, 긍정적인 감정을 더욱 강화할 수 있다.",
+      "success": true,
+      "memo": "창밖스케치",
+      "photo_path": null
+    },
+    {
+      "difficulty": "하",
+      "category": "성장",
+      "mission": "상상 여행하기",
+      "full_mission": "마음에 드는 장소를 상상하며 50분간 상상의 여행하기",
+      "timestamp": "2026-04-23 15:14",
+      "mood": "막막",
+      "time": "50분",
+      "emotion_type": "부정적",
+      "effect": "상상의 여행은 스트레스를 줄이고 긍정적인 감정을 활성화하여 기분을 개선하는 데 도움이 됩니다.",
+      "success": true,
+      "memo": "오아시스로 여행했다",
+      "photo_path": null
+    },
+    {
+      "difficulty": "하",
+      "category": "성장",
+      "mission": "탐험하기",
+      "full_mission": "집 밖으로 나가서 30분간 주변 공원 탐험하기",
+      "timestamp": "2026-04-23 15:35",
+      "mood": "심심하다",
+      "time": "30분",
+      "emotion_type": "지루함",
+      "effect": "새로운 환경과 활동을 통해 지루함을 극복하고 기분 전환에 도움을 주며, 신체 활동으로 인해 에너지를 증진시킬 수 있다.",
+      "success": true,
+      "memo": "집근처돌기",
+      "photo_path": null
+    },
+    {
+      "difficulty": "중",
+      "category": "건강",
+      "mission": "스트레칭하기",
+      "full_mission": "25분간 집안에서 간단한 스트레칭 하기",
+      "timestamp": "2026-04-23 16:00",
+      "mood": "졸리고 힘이없어요",
+      "time": "25분",
+      "emotion_type": "부정적",
+      "effect": "스트레칭을 통해 근육의 긴장을 풀고 혈액 순환을 촉진하여 에너지를 회복하며 기분을 개선할 수 있습니다.",
+      "success": true,
+      "memo": "스트레칭 25분 완료",
+      "photo_path": null
+    },
+    {
+      "difficulty": "하",
+      "category": "재미",
+      "mission": "15분 동안 가까운 카페나 서점 탐방하기",
+      "full_mission": "15분 동안 가까운 카페나 서점 탐방하기",
+      "timestamp": "2026-04-23 16:01",
+      "mood": "심심해여",
+      "time": "15분",
+      "emotion_type": "지루함",
+      "effect": "새로운 장소를 탐험함으로써 지루함을 해소하고 기분 전환을 할 수 있다. 새로운 경험은 긍정적인 감정을 유발할 수 있다.",
+      "success": false,
+      "memo": "투썸플레이스",
+      "photo_path": null
+    },
+    {
+      "difficulty": "하",
+      "category": "돌발",
+      "mission": "색칠하기",
+      "full_mission": "엉덩이로 색칠하기",
+      "timestamp": "2026-04-24 11:39",
+      "mood": "피곤",
+      "time": "50분",
+      "emotion_type": "부정적",
+      "effect": "웃음을 유발하며 창의력을 자극합니다.",
+      "success": true,
+      "memo": "별로",
+      "photo_path": null
+    },
+    {
+      "difficulty": "하",
+      "category": "건강",
+      "mission": "음악 듣기",
+      "full_mission": "15분 동안 기분이 좋아지는 음악 듣기",
+      "timestamp": "2026-04-24 12:55",
+      "mood": "뻐근함",
+      "time": "15분",
+      "emotion_type": "부정적",
+      "effect": "기분이 좋아지는 음악을 들음으로써 스트레스가 줄어들고 긍정적인 감정이 활성화된다.",
+      "success": true,
+      "memo": null,
+      "photo_path": null
+    },
+    {
+      "difficulty": "최상",
+      "category": "생산성",
+      "mission": "정리하기",
+      "full_mission": "집안에서 10분간 간단한 정리 정돈 하기",
+      "timestamp": "2026-04-24 12:59",
+      "mood": "귀찮음",
+      "time": "40분",
+      "emotion_type": "부정적",
+      "effect": "정리 정돈을 통해 성취감을 느끼고, 스스로의 환경을 개선함으로써 기분이 좋아질 수 있습니다.",
+      "success": true,
+      "memo": "상쾌함",
+      "photo_path": null
+    }
+  ],
+  "cards": [
+    {
+      "card": "새싹 카드",
+      "difficulty": "중"
+    },
+    {
+      "card": "골드 카드",
+      "difficulty": "최상"
+    },
+    {
+      "card": "새싹 카드",
+      "difficulty": "중"
+    },
+    {
+      "card": "골드 카드",
+      "difficulty": "최상"
+    },
+    {
+      "card": "골드 카드",
+      "difficulty": "최상"
+    },
+    {
+      "card": "새싹 카드",
+      "difficulty": "중"
+    },
+    {
+      "card": "새싹 카드",
+      "difficulty": "중"
+    },
+    {
+      "card": "씨앗 카드",
+      "difficulty": "하"
+    },
+    {
+      "card": "골드 카드",
+      "difficulty": "최상"
+    },
+    {
+      "card": "새싹 카드",
+      "difficulty": "중"
+    },
+    {
+      "card": "골드 카드",
+      "difficulty": "최상"
+    },
+    {
+      "card": "행운 카드",
+      "difficulty": "중"
+    },
+    {
+      "card": "골드 카드",
+      "difficulty": "최상"
+    },
+    {
+      "card": "도전 카드",
+      "difficulty": "도전"
+    },
+    {
+      "card": "골드 카드",
+      "difficulty": "최상"
+    },
+    {
+      "card": "골드 카드",
+      "difficulty": "최상"
+    },
+    {
+      "card": "햇살 카드",
+      "difficulty": "상"
+    },
+    {
+      "card": "지식 카드",
+      "difficulty": "중"
+    },
+    {
+      "card": "새싹 카드",
+      "difficulty": "중"
+    },
+    {
+      "card": "골드 카드",
+      "difficulty": "최상"
+    },
+    {
+      "card": "도전 카드",
+      "difficulty": "도전"
+    },
+    {
+      "card": "새싹 카드",
+      "difficulty": "중"
+    },
+    {
+      "card": "씨앗 카드",
+      "difficulty": "하"
+    },
+    {
+      "card": "회복 카드",
+      "difficulty": "중"
+    },
+    {
+      "card": "새싹 카드",
+      "difficulty": "중"
+    },
+    {
+      "card": "씨앗 카드",
+      "difficulty": "하"
+    },
+    {
+      "card": "새싹 카드",
+      "difficulty": "중"
+    }
+  ],
+  "last_category": "생산성",
+  "combo_count": 1,
+  "mission_history": [
+    "새로운 공원이나 산책로를 발견하고 30분 동안 탐험하기",
+    "좋아하는 음악을 들으며 30분간 댄스하기",
+    "좋아하는 요리를 만들어 먹기",
+    "편안한 장소에서 5분간 깊게 숨 쉬기",
+    "새로운 취미를 찾아 30분동안 해보기",
+    "5분간 심호흡 후 자신에게 긍정적인 메시지 쓰기",
+    "주변의 작은 자연을 감상하며 산책하기",
+    "주변에 있는 한 가지 색깔의 물건 모아보기",
+    "친구와 새로운 레시피 도전해 요리하기",
+    "60분 동안 새로운 게임을 만들어 친구들과 함께 플레이해보기",
+    "좋아하는 음악을 들으며 60분 동안 춤추기",
+    "집안의 식물에서 한 잎 따기",
+    "새로운 보드게임 만들기",
+    "40분 동안 새로운 시각으로 일상 풍경 스케치하기",
+    "마음에 드는 장소를 상상하며 50분간 상상의 여행하기",
+    "집 밖으로 나가서 30분간 주변 공원 탐험하기",
+    "25분간 집안에서 간단한 스트레칭 하기",
+    "엉덩이로 색칠하기",
+    "15분 동안 기분이 좋아지는 음악 듣기",
+    "집안에서 10분간 간단한 정리 정돈 하기"
+  ]
+}
