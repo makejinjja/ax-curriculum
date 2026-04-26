@@ -1,0 +1,183 @@
+[
+  {
+    "id": "case_001",
+    "description": "부정적 감정 + 짧은 시간 — 건강/재미 카테고리 기대",
+    "input": {
+      "emotion_text": "오늘 너무 지치고 우울해서 아무것도 하기 싫어.",
+      "minutes": 10,
+      "current_fruits": []
+    },
+    "expected": {
+      "emotion_type": "부정적",
+      "category": ["건강", "재미"],
+      "difficulty": ["하", "돌발"]
+    },
+    "requirements": [
+      "mission_nonempty",
+      "basis_nonempty",
+      "effect_nonempty",
+      "emotion_type_match",
+      "category_allowed",
+      "difficulty_allowed",
+      "time_feasible",
+      "category_matches_emotion"
+    ],
+    "rules": {
+      "max_time_minutes": 10,
+      "allowed_categories": ["건강", "재미", "성장", "생산성", "돌발"],
+      "allowed_difficulties": ["하", "돌발"],
+      "min_mission_length": 10,
+      "max_mission_length": 200
+    },
+    "relevant_doc_ids": [],
+    "precomputed": null
+  },
+  {
+    "id": "case_002",
+    "description": "긍정적 감정 + 중간 시간 — 성장/생산성 카테고리 기대",
+    "input": {
+      "emotion_text": "오늘은 기분이 너무 좋아! 뭔가 생산적인 걸 하고 싶어.",
+      "minutes": 30,
+      "current_fruits": [
+        {"category": "재미", "mission": "유튜브 댄스 영상 따라하기"},
+        {"category": "건강", "mission": "스트레칭 10분"}
+      ]
+    },
+    "expected": {
+      "emotion_type": "긍정적",
+      "category": ["성장", "생산성", "재미"],
+      "difficulty": ["하", "중", "상"]
+    },
+    "requirements": [
+      "mission_nonempty",
+      "basis_nonempty",
+      "effect_nonempty",
+      "emotion_type_match",
+      "category_allowed",
+      "time_feasible",
+      "category_matches_emotion"
+    ],
+    "rules": {
+      "max_time_minutes": 30,
+      "allowed_categories": ["재미", "성장", "생산성", "돌발"],
+      "allowed_difficulties": ["하", "중", "상"],
+      "min_mission_length": 10,
+      "max_mission_length": 200,
+      "max_fruits": 10,
+      "max_category_ratio": 0.6
+    },
+    "relevant_doc_ids": [],
+    "precomputed": null
+  },
+  {
+    "id": "case_003",
+    "description": "집중됨 감정 + 긴 시간 — 생산성/성장 카테고리 기대",
+    "input": {
+      "emotion_text": "지금 집중이 잘 되는 상태야. 뭔가 깊이 있는 작업을 해보고 싶어.",
+      "minutes": 45,
+      "current_fruits": [
+        {"category": "생산성", "mission": "독서 20분"},
+        {"category": "성장", "mission": "새로운 레시피 요리"},
+        {"category": "생산성", "mission": "일기 쓰기"}
+      ]
+    },
+    "expected": {
+      "emotion_type": "집중됨",
+      "category": ["생산성", "성장"],
+      "difficulty": ["중", "상", "최상"]
+    },
+    "requirements": [
+      "mission_nonempty",
+      "basis_nonempty",
+      "effect_nonempty",
+      "emotion_type_match",
+      "category_allowed",
+      "time_feasible",
+      "category_matches_emotion"
+    ],
+    "rules": {
+      "max_time_minutes": 45,
+      "allowed_categories": ["생산성", "성장", "돌발"],
+      "allowed_difficulties": ["중", "상", "최상"],
+      "min_mission_length": 15,
+      "max_mission_length": 200,
+      "max_fruits": 10,
+      "max_category_ratio": 0.7
+    },
+    "relevant_doc_ids": [],
+    "precomputed": null
+  },
+  {
+    "id": "case_004",
+    "description": "지루함 감정 + 아주 짧은 시간 — 재미/돌발 기대, 콤보 규칙 포함",
+    "input": {
+      "emotion_text": "너무 지루해. 5분 만에 뭔가 재미있는 거 할 수 없을까?",
+      "minutes": 5,
+      "current_fruits": []
+    },
+    "expected": {
+      "emotion_type": "지루함",
+      "category": ["재미", "돌발"],
+      "difficulty": ["하", "돌발"]
+    },
+    "requirements": [
+      "mission_nonempty",
+      "basis_nonempty",
+      "effect_nonempty",
+      "emotion_type_match",
+      "category_allowed",
+      "difficulty_allowed",
+      "time_feasible",
+      "category_matches_emotion"
+    ],
+    "rules": {
+      "max_time_minutes": 5,
+      "allowed_categories": ["재미", "생산성", "성장", "돌발"],
+      "allowed_difficulties": ["하", "돌발"],
+      "min_mission_length": 5,
+      "max_mission_length": 150,
+      "combo_wildcard_no_increment": true
+    },
+    "relevant_doc_ids": [],
+    "precomputed": null
+  },
+  {
+    "id": "case_005",
+    "description": "중립 감정 + 20분 — 복합 카테고리 허용, 열매 편향 방지 검사",
+    "input": {
+      "emotion_text": "특별한 감정은 없어. 그냥 평범한 하루야.",
+      "minutes": 20,
+      "current_fruits": [
+        {"category": "생산성", "mission": "독서 20분"},
+        {"category": "생산성", "mission": "일기 쓰기"},
+        {"category": "생산성", "mission": "플래너 정리"},
+        {"category": "재미", "mission": "음악 듣기"}
+      ]
+    },
+    "expected": {
+      "emotion_type": "중립",
+      "category": ["생산성", "성장", "재미", "건강"],
+      "difficulty": ["하", "중"]
+    },
+    "requirements": [
+      "mission_nonempty",
+      "basis_nonempty",
+      "effect_nonempty",
+      "emotion_type_match",
+      "category_allowed",
+      "time_feasible",
+      "category_matches_emotion"
+    ],
+    "rules": {
+      "max_time_minutes": 20,
+      "allowed_categories": ["생산성", "성장", "재미", "건강", "돌발"],
+      "allowed_difficulties": ["하", "중"],
+      "min_mission_length": 10,
+      "max_mission_length": 200,
+      "max_fruits": 10,
+      "max_category_ratio": 0.5
+    },
+    "relevant_doc_ids": [],
+    "precomputed": null
+  }
+]

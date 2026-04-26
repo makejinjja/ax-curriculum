@@ -902,15 +902,30 @@ def show_history(data: dict):
     print(f"  {BLD}📋 미션 리스트  ({len(history)}건){RST}")
     print(f"{'='*38}")
 
-    for i, f in enumerate(reversed(history), 1):
+    # 미션 텍스트 기준으로 횟수 집계
+    mission_counts = Counter(
+        f.get("full_mission") or f.get("mission", "") for f in history
+    )
+
+    seen: set[str] = set()
+    display_idx = 1
+
+    for f in reversed(history):
+        full = f.get("full_mission") or f.get("mission", "")
+        if full in seen:
+            continue
+        seen.add(full)
+
         cat      = f.get("category", "")
         cat_info = CAT.get(cat, {"col": "", "label": cat})
         short    = f.get("mission", "")
-        full     = f.get("full_mission", "")
+        count    = mission_counts[full]
+        count_str = f"  {GD}×{count}회{RST}" if count > 1 else ""
 
-        print(f"\n  [{i}] {cat_info['col']}[{cat_info['label']}]{RST}  {short}")
+        print(f"\n  [{display_idx}] {cat_info['col']}[{cat_info['label']}]{RST}  {short}{count_str}")
         if full and full != short:
             print(f"      내용: {full}")
+        display_idx += 1
 
     input("\n  Enter를 눌러 돌아가기... ")
 

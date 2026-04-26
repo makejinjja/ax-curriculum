@@ -1,0 +1,231 @@
+AX Compass Curriculum Knowledge Base
+=====================================
+
+## AX Compass Framework Overview
+
+AX Compass is a structured curriculum design methodology that emphasizes:
+- Alignment: Learning objectives align to measurable outcomes
+- eXperience: Activities are participant-centered and experiential
+- Compass: Clear direction with checkpoints throughout the learning journey
+
+Core design principles:
+1. Backward Design — start with the desired outcome, then design assessments and activities
+2. Active Learning — minimum 60% of session time on activities vs. lecture
+3. Spaced Repetition — revisit key concepts across multiple modules
+4. Social Learning — peer discussion and collaborative activities for better retention
+
+
+## Curriculum Template: Onboarding Program (New Employee, 3 hours)
+
+Title: New Employee Onboarding — Company Culture & Processes
+Target Audience: New hires, all roles, no prior company knowledge
+Total Duration: 180 minutes
+Group Size: 10-20 participants
+Learning Objectives:
+- Describe the company's mission, values, and organizational structure
+- Navigate key internal tools and HR systems independently
+- Identify their manager, team members, and key cross-functional contacts
+- Complete first-week administrative tasks without assistance
+
+Modules:
+1. Welcome & Icebreaker (20 min)
+   Activities: Name + fun fact introductions, culture values card sort exercise
+   Materials: Value cards, name tags
+
+2. Company Mission & Culture Deep Dive (35 min)
+   Activities: Leadership video, small group discussion on "what does [value] look like in our work?", gallery walk
+   Materials: Slides, printed value statements
+
+3. Organizational Structure & Key Contacts (25 min)
+   Activities: Org chart walkthrough, "Who do I call?" scenario exercise
+   Materials: Org chart handout, scenario cards
+
+4. Tools & Systems Hands-On (45 min)
+   Activities: Guided tour of HRIS, email setup, communication tools; independent practice time
+   Materials: Laptop, step-by-step guides
+
+5. First Week Checklist & Q&A (25 min)
+   Activities: Checklist review, pair-check ("does your buddy have everything?"), open Q&A
+   Materials: Printed checklist
+
+6. Closing & Commitment (10 min)
+   Activities: One-word reflection, commitment card (write one thing you'll do this week)
+   Materials: Index cards
+
+Assessment: Completion of first-week checklist + manager check-in at day 5
+
+
+## Curriculum Template: Leadership Communication Skills (Manager, Half-Day)
+
+Title: Communicating for Impact — Manager Communication Essentials
+Target Audience: Mid-level managers, 2+ years management experience
+Total Duration: 240 minutes
+Group Size: 12-16 participants
+Learning Objectives:
+- Apply the SBI (Situation-Behavior-Impact) feedback model in real scenarios
+- Conduct a structured 1:1 conversation using active listening techniques
+- Adapt communication style to different team members using DISC basics
+- Deliver difficult messages with clarity and empathy
+
+Modules:
+1. Communication Self-Assessment (20 min)
+   Activities: DISC style quiz, pair sharing of results, pattern identification
+   Materials: DISC worksheets
+
+2. The Feedback Conversation: SBI Model (50 min)
+   Activities: Model demonstration (video), practice in triads (speaker-receiver-observer rotation), debrief
+   Materials: SBI reference cards, scenario cards
+
+3. Active Listening in 1:1s (40 min)
+   Activities: Listening inventory self-score, fishbowl 1:1 role-play, group debrief
+   Materials: Listening inventory, fishbowl observation guide
+
+4. BREAK (10 min)
+
+5. Delivering Difficult Messages (45 min)
+   Activities: Case study analysis in pairs, "what would you say?" practice with coach feedback
+   Materials: Case studies, feedback rubric
+
+6. Adapting Your Style (35 min)
+   Activities: Team profile mapping exercise, scenario rotation stations
+   Materials: Style adaptation matrix
+
+7. Action Planning & Commitment (20 min)
+   Activities: Individual action plan (2 goals for next 30 days), accountability partner selection
+   Materials: Action plan template
+
+8. Closing Reflection (20 min)
+   Activities: Plus-Delta debrief, commitment sharing in pairs
+   Materials: Sticky notes
+
+Assessment: 30-day follow-up survey + manager observation checklist
+
+
+## Curriculum Template: Data Literacy for Non-Technical Teams (90 min)
+
+Title: Understanding Data — Decision Making for Non-Technical Roles
+Target Audience: Marketing, HR, Operations staff with no data background
+Total Duration: 90 minutes
+Group Size: 15-25 participants
+Learning Objectives:
+- Distinguish between different types of data visualizations and when to use each
+- Identify misleading charts and data presentations
+- Ask the right questions when presented with data reports
+- Apply a 3-step framework to make data-informed decisions
+
+Modules:
+1. Why Data Matters (15 min)
+   Activities: "Guess the statistic" game, discussion on a recent business decision made from data
+   Materials: Slides
+
+2. Reading Charts & Visualizations (25 min)
+   Activities: Chart interpretation challenge (6 chart types), pair work identifying what story each tells
+   Materials: Printed chart examples
+
+3. Spot the Mislead (20 min)
+   Activities: "What's wrong with this chart?" game — groups find flaws in intentionally bad charts
+   Materials: Printed bad chart examples
+
+4. The 3-Question Framework (20 min)
+   Activities: Framework introduction, apply to a real company report in small groups
+   Materials: Framework reference card, sample report
+
+5. Wrap-Up & Application (10 min)
+   Activities: Individual reflection: "one data question I'll ask at my next meeting"
+   Materials: None
+
+Assessment: Post-session quiz (5 questions) after 1 week
+
+
+## Curriculum Template: Design Thinking Workshop (Innovation, Full Day)
+
+Title: Design Thinking Fundamentals — From Problem to Prototype
+Target Audience: Product teams, innovation leads, cross-functional teams
+Total Duration: 480 minutes (8 hours including breaks)
+Group Size: 12-24 participants (teams of 4)
+Learning Objectives:
+- Apply the 5-stage Design Thinking process to a real challenge
+- Conduct empathy interviews and synthesize user insights
+- Generate and prioritize ideas using structured ideation techniques
+- Build and test a low-fidelity prototype with real users
+
+Modules:
+1. Introduction & Team Formation (30 min)
+   Activities: Design Thinking overview, team formation, challenge brief review
+   Materials: Challenge brief, team canvas
+
+2. Empathize: User Interview Practice (60 min)
+   Activities: Interview technique instruction, practice interviews in pairs, synthesis of insights
+   Materials: Interview guide, empathy map template
+
+3. Define: Problem Framing (45 min)
+   Activities: Affinity mapping of interview insights, "How Might We" statement crafting, gallery vote
+   Materials: Post-its, HMW cards
+
+4. BREAK (15 min)
+
+5. Ideate: Divergent & Convergent Thinking (60 min)
+   Activities: Brain dump (8 ideas in 8 min), crazy 8s, dot voting for top ideas
+   Materials: Sketch paper, markers, dot stickers
+
+6. Prototype: Build It (90 min)
+   Activities: Paper/foam prototype construction with team roles, build sprint
+   Materials: Craft materials, scissors, tape, paper
+
+7. LUNCH BREAK (60 min)
+
+8. Test: User Feedback (60 min)
+   Activities: Prototype testing with external users or role-played users, observation notes
+   Materials: Observation guide, feedback capture sheet
+
+9. Iterate & Refine (45 min)
+   Activities: Synthesize feedback, identify top 3 improvements, update prototype
+   Materials: Iteration log
+
+10. Present & Reflect (45 min)
+    Activities: 5-minute team presentations, structured peer feedback (2 stars + 1 wish)
+    Materials: Presentation guide
+
+11. Closing: Next Steps (30 min)
+    Activities: Individual commitment to real-world application, team action items
+    Materials: Commitment card
+
+Assessment: Prototype demonstration + peer feedback + facilitator rubric
+
+
+## AX Compass Design Principles
+
+### Bloom's Taxonomy Verb Guide
+- Remember: define, list, recall, name, identify
+- Understand: explain, describe, summarize, classify, distinguish
+- Apply: use, demonstrate, solve, practice, execute
+- Analyze: compare, differentiate, examine, break down, question
+- Evaluate: judge, assess, critique, prioritize, justify
+- Create: design, build, compose, construct, plan, develop
+
+### Module Timing Guidelines
+- Micro-learning module: 5-15 minutes (single concept, one activity)
+- Standard module: 20-45 minutes (concept + practice + debrief)
+- Deep-dive module: 45-90 minutes (complex skill with multiple activities)
+- Never exceed 90 minutes without a break
+- Rule of thumb: 40% instruction, 60% application and practice
+
+### Group Size Activity Matrix
+- Individual (1): Reflection, self-assessment, journaling
+- Pairs (2): Peer feedback, role-play practice, think-pair-share
+- Small group (3-5): Case study, project work, discussion
+- Large group (10+): Gallery walk, fishbowl, panel discussion, presentations
+- Whole group (all): Icebreakers, debrief, Q&A
+
+### Common Facilitation Mistakes to Avoid
+- Too much lecture: keep slides to 3 minutes maximum per screen
+- Vague activities: always specify exact instructions, time, and output
+- Missing transitions: add 2-min buffer between modules
+- Unclear objectives: objectives should be measurable and participant-focused
+- No psychological safety: open with icebreaker + ground rules for discussion modules
+
+### Energy Curve Management
+- Morning sessions: good for analytical, complex content (high cognitive load)
+- Post-lunch: use high-energy activities (movement, games, group work)
+- Late afternoon: wrap-up, reflection, commitment activities
+- Build in energy checks (quick pulse polls or stand-up stretches every 90 min)

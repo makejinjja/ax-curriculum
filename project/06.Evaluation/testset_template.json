@@ -1,0 +1,115 @@
+[
+  {
+    "_comment": "=== TESTSET TEMPLATE ===  각 필드 설명은 아래 __schema__ 오브젝트를 참고하세요.",
+
+    "__schema__": {
+      "id": "케이스 고유 ID (문자열). 리포트에서 행 식별자로 사용됨.",
+      "description": "케이스 설명 (자유 형식). 리포트 가독성을 위해 작성.",
+
+      "input": {
+        "emotion_text": "사용자가 입력한 감정 문장. bloom의 classify_emotion()에 전달됨.",
+        "minutes": "사용 가능한 시간 (분, 정수). time_feasible 체크에 사용됨.",
+        "current_fruits": [
+          {
+            "category": "기존 열매의 카테고리 (건강|재미|성장|생산성|돌발)",
+            "mission": "기존 열매의 미션 텍스트"
+          }
+        ]
+      },
+
+      "expected": {
+        "emotion_type": "기대되는 감정 분류 (부정적|중립|긍정적|집중됨|지루함). emotion_type_match requirement에서 사용됨.",
+        "category": ["허용되는 미션 카테고리 목록. category_allowed requirement에서 사용됨."],
+        "difficulty": ["허용되는 난이도 목록 (하|중|상|최상|돌발|도전). difficulty_allowed requirement에서 사용됨."]
+      },
+
+      "requirements": [
+        "평가할 요구사항 목록. 지원 키:",
+        "  mission_nonempty        미션 텍스트가 비어있지 않음",
+        "  basis_nonempty          근거 텍스트가 비어있지 않음",
+        "  effect_nonempty         효과 텍스트가 비어있지 않음",
+        "  emotion_type_match      감정 분류가 expected.emotion_type과 일치",
+        "  category_allowed        미션 카테고리가 expected.category 목록 안에 있음",
+        "  difficulty_allowed      난이도가 expected.difficulty 목록 안에 있음",
+        "  time_feasible           난이도 기반 예상 소요 시간 ≤ input.minutes",
+        "  category_matches_emotion 감정 유형에 적합한 카테고리인지 휴리스틱 검사"
+      ],
+
+      "rules": {
+        "_comment": "RuleEvaluator에서 사용. score = 통과 규칙 수 / 전체 규칙 수. 모두 통과해야 passed=True.",
+        "max_time_minutes": "난이도 기반 예상 소요 시간 ≤ 이 값 (분, 정수)",
+        "allowed_categories": ["허용 카테고리 목록 (없으면 이 규칙 스킵)"],
+        "allowed_difficulties": ["허용 난이도 목록 (없으면 이 규칙 스킵)"],
+        "min_mission_length": "미션 텍스트 최소 글자 수 (정수)",
+        "max_mission_length": "미션 텍스트 최대 글자 수 (정수)",
+        "max_fruits": "현재 data.fruits 개수 상한 (정수, 이 값 미만이어야 함)",
+        "combo_wildcard_no_increment": "true이면 돌발 미션 시 콤보 변화 없음 검사 (boolean)",
+        "max_category_ratio": "fruits 중 단일 카테고리 최대 비율 (0.0~1.0, 예: 0.5 → 50%)"
+      },
+
+      "relevant_doc_ids": [
+        "Retrieval 평가에 사용할 관련 문서 ID 목록.",
+        "비어있으면 Retrieval 평가 자동 스킵 (score=1.0).",
+        "예: ['doc_001', 'paper_abc'] — bloom의 retrieve()가 반환하는 source 필드와 매칭됨."
+      ],
+
+      "precomputed": {
+        "_comment": "오프라인 평가(--no-llm)에서 사용. live 파이프라인 대신 미리 계산된 결과를 주입함.",
+        "parsed_mission": {
+          "mission": "미션 텍스트",
+          "basis": "근거 텍스트",
+          "effect": "효과 텍스트",
+          "category": "카테고리",
+          "difficulty": "난이도",
+          "is_wildcard": false
+        },
+        "emotion_type": "감정 분류 결과",
+        "retrieved_context": "RAG로 검색된 컨텍스트 (Faithfulness 평가용)",
+        "retrieved_sources": ["검색된 문서 ID 목록 (Retrieval 평가용)"],
+        "combo_before": 0,
+        "combo_after": 1
+      }
+    },
+
+    "id": "case_template_001",
+    "description": "여기에 케이스 설명을 작성하세요.",
+
+    "input": {
+      "emotion_text": "여기에 감정 문장을 입력하세요.",
+      "minutes": 20,
+      "current_fruits": []
+    },
+
+    "expected": {
+      "emotion_type": "중립",
+      "category": ["생산성", "성장"],
+      "difficulty": ["하", "중"]
+    },
+
+    "requirements": [
+      "mission_nonempty",
+      "basis_nonempty",
+      "effect_nonempty",
+      "emotion_type_match",
+      "category_allowed",
+      "difficulty_allowed",
+      "time_feasible",
+      "category_matches_emotion"
+    ],
+
+    "rules": {
+      "max_time_minutes": 20,
+      "allowed_categories": ["생산성", "성장", "재미", "건강", "돌발"],
+      "allowed_difficulties": ["하", "중"],
+      "min_mission_length": 10,
+      "max_mission_length": 200,
+      "max_fruits": 10,
+      "combo_wildcard_no_increment": true,
+      "max_category_ratio": 0.5
+    },
+
+    "relevant_doc_ids": [],
+
+    "precomputed": null
+  }
+]

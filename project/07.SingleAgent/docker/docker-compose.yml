@@ -1,0 +1,16 @@
+services:
+  backend:
+    build:
+      context: ..           # repo root of 07.SingleAgent/
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../.env             # OPENAI_API_KEY, JWT_SECRET_KEY, TAVILY_API_KEY, ...
+    environment:
+      RAG_DATA_DIR: /app/data
+      RAG_CACHE_FILE: /app/data/.index_cache/rag_index.json
+      OPENAI_MODEL: gpt-4o-mini
+    volumes:
+      - ../data:/app/data   # PDF/TXT knowledge base + index cache (read/write)
+    restart: unless-stopped

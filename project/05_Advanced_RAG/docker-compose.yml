@@ -1,0 +1,17 @@
+services:
+  bloom:
+    build:
+      context: .
+      dockerfile: 05_7.Dockerfile
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    environment:
+      BLOOM_DATA_FILE: /app/data/.mission_data.json
+      BLOOM_PDF_DIR: /app/pdfs
+      BLOOM_CACHE_FILE: /app/data/.index_cache/mission_rag_v7_index.json
+    volumes:
+      - ./pdfs:/app/pdfs:ro          # PDF 논문 (읽기 전용)
+      - ./data:/app/data             # 유저 데이터 + 인덱스 캐시 (읽기/쓰기)
+    restart: unless-stopped
