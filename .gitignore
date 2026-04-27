@@ -31,3 +31,8 @@ project/p1/__pycache__/
 project/p1/.index_cache/
 project/p1/.mission_data.json
 naver/__pycache__/
+
+# RAG index caches (large generated files)
+**/.index_cache/
+**/.curricula/
+**/.mission_data.json

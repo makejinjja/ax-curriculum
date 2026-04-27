@@ -1,198 +1,251 @@
 """
-tools.py — The 4 callable tools exposed to the ReAct agent
+tools.py — 에이전트 툴 정의 및 실행기
 
-  1. rag_search        — BM25+cosine hybrid over internal knowledge base
-  2. web_search        — Tavily real-time web search
-  3. generate_curriculum — GPT-4o-mini structured JSON curriculum generation
-  4. validate_curriculum — deterministic rule-based validation (time/structure/group)
+도구:
+  rag_search     — 내부 심리학 논문 하이브리드 검색
+  web_search     — Tavily 외부 웹 검색
+  validate_mission — 생성된 미션 규칙 검증
 """
 from __future__ import annotations
 import json
 import os
-from typing import Any
+import re
 
 from openai import OpenAI
 
-import rag as rag_module
+from rag import search_rag, build_context
+from schemas import VALID_CATEGORIES, VALID_DIFFICULTIES, DIFFICULTY_MIN_MINUTES
+
+# ── 툴 스키마 정의 ───────────────────────────────────────────
+TOOL_DEFINITIONS: list[dict] = [
+    {
+        "type": "function",
+        "function": {
+            "name": "rag_search",
+            "description": (
+                "내부 심리학 논문 지식베이스에서 관련 연구를 검색한다. "
+                "미션 생성을 위한 과학적 근거를 찾을 때 사용한다."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "검색 쿼리 (영어 키워드 권장, 예: 'behavioral activation low mood depression')",
+                    },
+                    "emotion_type": {
+                        "type": "string",
+                        "enum": ["부정적", "중립", "긍정적", "집중됨", "지루함"],
+                        "description": "사용자의 감정 유형 (논문 부스트 가중치에 사용)",
+                    },
+                    "k": {
+                        "type": "integer",
+                        "description": "반환할 청크 수 (기본값: 4, 최대: 8)",
+                    },
+                },
+                "required": ["query", "emotion_type"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "web_search",
+            "description": (
+                "Tavily를 사용해 웹에서 추가 정보를 검색한다. "
+                "내부 RAG에 없는 최신 정보나 구체적 활동 사례가 필요할 때 사용한다."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "웹 검색 쿼리",
+                    },
+                    "max_results": {
+                        "type": "integer",
+                        "description": "반환할 결과 수 (기본값: 3, 최대: 5)",
+                    },
+                },
+                "required": ["query"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "validate_mission",
+            "description": (
+                "생성된 미션의 형식(필수 태그), 시간 제약, 카테고리·난이도 규칙을 검증한다. "
+                "미션 생성 후 반드시 호출해야 하며, 검증 실패 시 오류 메시지를 참고해 수정한다."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "mission_text": {
+                        "type": "string",
+                        "description": "검증할 미션 전체 텍스트 (태그 포함)",
+                    },
+                    "available_minutes": {
+                        "type": "integer",
+                        "description": "사용자의 가용 시간 (분)",
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "미션 카테고리 (건강/생산성/재미/성장/돌발 중 하나)",
+                    },
+                    "difficulty": {
+                        "type": "string",
+                        "description": "미션 난이도 (하/중/상/최상 중 하나)",
+                    },
+                },
+                "required": ["mission_text", "available_minutes", "category", "difficulty"],
+            },
+        },
+    },
+]
 
 
-# ── 1. RAG search ─────────────────────────────────────────────
+# ── 툴 실행 디스패처 ────────────────────────────────────────
 
-def rag_search(client: OpenAI, query: str, k: int = 5) -> str:
-    try:
-        idx = rag_module.get_index(client)
-        results = idx.search(client, query, k=k)
-        if not results:
-            return "No relevant documents found in the AX Compass knowledge base."
-        parts = [
-            f"[{i+1}] Source: {r['source']} (score={r['score']})\n{r['text']}"
-            for i, r in enumerate(results)
-        ]
-        return "\n\n---\n\n".join(parts)
-    except Exception as exc:
-        return f"RAG search error: {exc}"
+def execute_tool(
+    tool_name: str,
+    args: dict,
+    *,
+    client: OpenAI,
+    rag_state: dict,
+    available_minutes: int,
+) -> dict:
+    if tool_name == "rag_search":
+        return _rag_search(client, rag_state, **args)
+    elif tool_name == "web_search":
+        return _web_search(**args)
+    elif tool_name == "validate_mission":
+        args.setdefault("available_minutes", available_minutes)
+        return _validate_mission(**args)
+    else:
+        return {"error": f"알 수 없는 툴: {tool_name}"}
 
 
-# ── 2. Web search ─────────────────────────────────────────────
+# ── rag_search 구현 ──────────────────────────────────────────
 
-def web_search(query: str) -> str:
-    key = os.environ.get("TAVILY_API_KEY", "")
-    if not key:
-        return "Web search unavailable: TAVILY_API_KEY not configured."
+def _rag_search(
+    client: OpenAI,
+    rag_state: dict,
+    query: str,
+    emotion_type: str,
+    k: int = 4,
+) -> dict:
+    chunks     = rag_state.get("chunks", [])
+    embeddings = rag_state.get("embeddings", [])
+    bm25       = rag_state.get("bm25")
+
+    if not chunks:
+        return {"error": "RAG 인덱스가 아직 로드되지 않았습니다. 잠시 후 다시 시도하세요."}
+
+    k = min(max(k, 1), 8)
+    results = search_rag(
+        client=client,
+        query=query,
+        chunks=chunks,
+        embeddings=embeddings,
+        bm25=bm25,
+        emotion_type=emotion_type,
+        k=k,
+    )
+    context = build_context(results)
+    sources = list(dict.fromkeys(c["source"] for c in results))
+    return {
+        "context": context,
+        "sources": sources,
+        "chunk_count": len(results),
+    }
+
+
+# ── web_search 구현 ──────────────────────────────────────────
+
+def _web_search(query: str, max_results: int = 3) -> dict:
+    api_key = os.environ.get("TAVILY_API_KEY", "")
+    if not api_key:
+        return {
+            "error": "TAVILY_API_KEY가 설정되지 않았습니다. .env에 추가하세요.",
+            "fallback": "RAG 검색 결과만으로 미션을 생성합니다.",
+        }
     try:
         from tavily import TavilyClient
-        res = TavilyClient(api_key=key).search(
-            query=query, max_results=5, search_depth="basic"
-        )
-        parts = [
-            f"[{r.get('title', 'No title')}]\n{r.get('content', '')}\nURL: {r.get('url', '')}"
-            for r in res.get("results", [])
+        tc = TavilyClient(api_key=api_key)
+        max_results = min(max(max_results, 1), 5)
+        results = tc.search(query=query, max_results=max_results)
+        items = [
+            {
+                "title":   r.get("title", ""),
+                "url":     r.get("url", ""),
+                "content": r.get("content", "")[:600],
+            }
+            for r in results.get("results", [])
         ]
-        return "\n\n---\n\n".join(parts) if parts else "No results found."
+        return {"results": items, "query": query, "count": len(items)}
+    except ImportError:
+        return {"error": "tavily-python 패키지가 설치되지 않았습니다. pip install tavily-python"}
     except Exception as exc:
-        return f"Web search error: {exc}"
+        return {"error": str(exc)}
 
 
-# ── 3. Generate curriculum ────────────────────────────────────
+# ── validate_mission 구현 ────────────────────────────────────
 
-def generate_curriculum(
-    client: OpenAI,
-    topic: str,
-    target_audience: str,
-    total_duration_minutes: int,
-    group_size: str,
-    learning_objectives: list[str],
-    additional_context: str = "",
-) -> dict[str, Any]:
-    obj_list = "\n".join(f"- {o}" for o in learning_objectives)
-    prompt = f"""You are a professional curriculum designer following the AX Compass methodology.
-
-Design a complete, facilitation-ready curriculum with these specifications:
-
-Topic: {topic}
-Target Audience: {target_audience}
-Total Duration: {total_duration_minutes} minutes
-Group Size: {group_size}
-Learning Objectives:
-{obj_list}
-Additional Context: {additional_context if additional_context else "None"}
-
-Rules:
-- Module durations MUST sum to exactly {total_duration_minutes} minutes
-- Every module MUST have at least one concrete activity
-- Use Bloom's Taxonomy action verbs in objectives
-- Activities must be specific and facilitation-ready (not vague)
-- Minimum 2 modules
-
-Return ONLY a valid JSON object (no markdown fences):
-{{
-  "title": "...",
-  "target_audience": "...",
-  "total_duration_minutes": {total_duration_minutes},
-  "group_size": "...",
-  "learning_objectives": ["...", "..."],
-  "modules": [
-    {{
-      "title": "...",
-      "duration_minutes": <integer>,
-      "objectives": ["..."],
-      "activities": ["detailed activity description"],
-      "materials": ["..."]
-    }}
-  ],
-  "assessment": "...",
-  "notes": "..."
-}}"""
-
-    resp = client.chat.completions.create(
-        model=os.environ.get("OPENAI_MODEL", "gpt-4o-mini"),
-        messages=[{"role": "user", "content": prompt}],
-        response_format={"type": "json_object"},
-        temperature=0.7,
-    )
-    return json.loads(resp.choices[0].message.content)
-
-
-# ── 4. Validate curriculum ────────────────────────────────────
-
-def validate_curriculum(curriculum: dict[str, Any]) -> dict[str, Any]:
+def _validate_mission(
+    mission_text: str,
+    available_minutes: int,
+    category: str,
+    difficulty: str,
+) -> dict:
     errors: list[str] = []
-    warnings: list[str] = []
 
-    # Required fields
-    required = [
-        "title", "target_audience", "total_duration_minutes",
-        "group_size", "learning_objectives", "modules",
-    ]
-    for field in required:
-        if field not in curriculum:
-            errors.append(f"Missing required field: '{field}'")
+    # 1. 필수 태그 확인
+    for tag in ["[미션]", "[카테고리]", "[난이도]", "[근거]", "[효과]"]:
+        if tag not in mission_text:
+            errors.append(f"필수 태그 누락: {tag}")
+
+    # 2. 카테고리 규칙
+    if category not in VALID_CATEGORIES:
+        errors.append(
+            f"잘못된 카테고리: '{category}'. "
+            f"허용값: {', '.join(sorted(VALID_CATEGORIES))}"
+        )
+
+    # 3. 난이도 규칙
+    if difficulty not in VALID_DIFFICULTIES:
+        errors.append(
+            f"잘못된 난이도: '{difficulty}'. "
+            f"허용값: {', '.join(sorted(VALID_DIFFICULTIES))}"
+        )
+
+    # 4. 시간 제약 (난이도별 최소 필요 시간이 가용 시간을 초과하는지 확인)
+    if difficulty in DIFFICULTY_MIN_MINUTES:
+        min_needed = DIFFICULTY_MIN_MINUTES[difficulty]
+        if min_needed > available_minutes:
+            errors.append(
+                f"시간 불일치: '{difficulty}' 난이도는 최소 {min_needed}분이 필요하지만 "
+                f"가용 시간은 {available_minutes}분입니다. "
+                f"더 낮은 난이도를 선택하거나 미션 시간을 줄이세요."
+            )
+
+    # 5. 미션 내용 최소 길이
+    m = re.search(r"\[미션\]\s*\n?-?\s*(.+)", mission_text)
+    if m and len(m.group(1).strip()) < 5:
+        errors.append("미션 내용이 너무 짧습니다 (최소 5자).")
 
     if errors:
-        return {"valid": False, "errors": errors, "warnings": warnings, "score": 0.0}
-
-    total      = curriculum["total_duration_minutes"]
-    modules    = curriculum["modules"]
-    group_size = str(curriculum.get("group_size", "")).lower()
-
-    # ── Time rule ─────────────────────────────────────────────
-    module_sum = sum(m.get("duration_minutes", 0) for m in modules)
-    if abs(module_sum - total) > 5:
-        errors.append(
-            f"Module durations sum to {module_sum} min but declared total is {total} min "
-            f"(tolerance ±5 min). Adjust module durations."
-        )
-
-    # ── Session length rules ──────────────────────────────────
-    for m in modules:
-        dur  = m.get("duration_minutes", 0)
-        name = m.get("title", "Unnamed")
-        if dur > 90:
-            warnings.append(
-                f"Module '{name}' is {dur} min — consider splitting or adding a break."
-            )
-        if dur < 5:
-            warnings.append(f"Module '{name}' is only {dur} min — may feel rushed.")
-
-    # ── Structure rules ───────────────────────────────────────
-    if len(modules) < 2:
-        warnings.append(
-            "Only 1 module detected. Add at least an introduction and wrap-up."
-        )
-
-    for m in modules:
-        name = m.get("title", "Unnamed")
-        if not m.get("objectives"):
-            warnings.append(f"Module '{name}' has no learning objectives.")
-        if not m.get("activities"):
-            errors.append(
-                f"Module '{name}' has no activities — curriculum is not actionable."
-            )
-
-    if len(curriculum.get("learning_objectives", [])) < 2:
-        warnings.append(
-            "Fewer than 2 overall learning objectives. Add more specificity."
-        )
-
-    if not curriculum.get("assessment"):
-        warnings.append("No assessment method defined — add how learning will be measured.")
-
-    # ── Group rules ───────────────────────────────────────────
-    large_group = any(kw in group_size for kw in ["large", "50+", "100", "200"])
-    for m in modules:
-        acts = " ".join(m.get("activities", [])).lower()
-        if large_group and "pair" in acts and "break" not in m.get("title", "").lower():
-            warnings.append(
-                f"Module '{m.get('title')}': pair activities in a large group "
-                "require clear facilitation instructions."
-            )
-
-    # ── Score ─────────────────────────────────────────────────
-    score = max(0.0, min(1.0, 1.0 - len(errors) * 0.3 - len(warnings) * 0.07))
+        return {
+            "valid": False,
+            "errors": errors,
+            "suggestion": "위 오류를 수정하거나 미션을 재생성하세요.",
+        }
 
     return {
-        "valid": len(errors) == 0,
-        "errors": errors,
-        "warnings": warnings,
-        "score": round(score, 2),
+        "valid": True,
+        "message": "미션이 모든 검증을 통과했습니다.",
+        "category": category,
+        "difficulty": difficulty,
+        "available_minutes": available_minutes,
     }
