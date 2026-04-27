@@ -25,6 +25,7 @@ env/
 
 # PDF files (often large or data files)
 *.pdf
+!project/data/*.pdf
 
 # Project specific ignores
 project/p1/__pycache__/
