@@ -1,0 +1,24 @@
+services:
+  backend:
+    build:
+      context: ..                        # 08.MultiAgent 루트를 빌드 컨텍스트로
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8001:8000"                      # 07.SingleAgent(8000)과 충돌 방지
+    env_file:
+      - ../.env
+    environment:
+      - BLOOM_PDF_DIR=/app/pdfs
+      - BLOOM_CACHE_FILE=/app/data/.index_cache/ma_rag_index.json
+      - BLOOM_DATA_FILE=/app/data/.mission_data.json
+      - BLOOM_CURRICULA_DIR=/app/data/.curricula
+    volumes:
+      - ../../data:/app/pdfs:ro          # 심리학 논문 PDF (읽기 전용)
+      - ../data:/app/data                # 임베딩 캐시 + 커리큘럼 데이터
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      start_period: 60s
+      retries: 3
