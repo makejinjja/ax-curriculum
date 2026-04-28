@@ -1,0 +1,19 @@
+{
+  "fruits": [
+    {
+      "difficulty": "하",
+      "category": "건강",
+      "mission": "스트레칭하기",
+      "full_mission": "30분 간 가벼운 스트레칭 하며 음악 듣기",
+      "timestamp": "2026-04-28 14:36",
+      "success": true
+    }
+  ],
+  "cards": [],
+  "last_category": "건강",
+  "combo_count": 1,
+  "mission_history": [
+    "30분 간 가벼운 스트레칭 하며 음악 듣기"
+  ],
+  "weak_paper_boost": []
+}

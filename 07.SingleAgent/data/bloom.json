@@ -1,0 +1,33 @@
+{
+  "fruits": [
+    {
+      "difficulty": "하",
+      "category": "건강",
+      "mission": "스트레칭하기",
+      "full_mission": "30분간 가벼운 스트레칭 하기",
+      "timestamp": "2026-04-28 14:26",
+      "success": true
+    },
+    {
+      "difficulty": "하",
+      "category": "건강",
+      "mission": "걷기",
+      "full_mission": "집 주변 걷기 30분 하기",
+      "timestamp": "2026-04-28 14:27",
+      "success": true
+    }
+  ],
+  "cards": [
+    {
+      "card": "회복 카드",
+      "difficulty": "중"
+    }
+  ],
+  "last_category": "건강",
+  "combo_count": 2,
+  "mission_history": [
+    "30분간 가벼운 스트레칭 하기",
+    "집 주변 걷기 30분 하기"
+  ],
+  "weak_paper_boost": []
+}

@@ -1,0 +1,467 @@
+{
+  "generated_at": "2026-04-28T14:53:51.679696",
+  "target": "08.MultiAgent",
+  "summary": {
+    "retrieval": {
+      "mean": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "pass_rate": 1.0,
+      "n": 5
+    },
+    "faithfulness": {
+      "mean": 0.32,
+      "min": 0.0,
+      "max": 1.0,
+      "pass_rate": 0.2,
+      "n": 5
+    },
+    "coverage": {
+      "mean": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "pass_rate": 1.0,
+      "n": 5
+    },
+    "rule": {
+      "mean": 0.9714,
+      "min": 0.8571,
+      "max": 1.0,
+      "pass_rate": 1.0,
+      "n": 5
+    }
+  },
+  "cases": [
+    {
+      "case_id": "case_001",
+      "description": "부정적 감정 + 짧은 시간 — 건강/재미 카테고리 기대",
+      "emotion_type": "부정적",
+      "generated_mission": "10분간 가벼운 스트레칭 하기",
+      "category": "건강",
+      "difficulty": "하",
+      "is_wildcard": false,
+      "retrieved_sources": [
+        "Adolescent_Behavioral_Activation_Program.pdf (행동 활성화 1)",
+        "Brief_Cognitive_Behavioral_Therapy_Guide.pdf (CBT(인지행동치료))",
+        "Brief_Cognitive_Behavioral_Therapy_Guide.pdf (CBT(인지행동치료))",
+        "Brief_Cognitive_Behavioral_Therapy_Guide.pdf (CBT(인지행동치료))",
+        "Brief_Cognitive_Behavioral_Therapy_Guide.pdf (CBT(인지행동치료))"
+      ],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_001",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_001",
+          "score": 0.2,
+          "passed": false,
+          "details": {
+            "claims": [
+              "운동은 우울증 증상 완화에 효과적이다.",
+              "신체 활동은 기분 전환에 도움을 준다.",
+              "스트레칭은 근육의 긴장을 풀어준다.",
+              "스트레칭은 기분을 밝게 할 수 있다.",
+              "스트레칭은 혈액 순환을 촉진하여 심리적 피로를 덜어준다."
+            ],
+            "verified": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "supported": 1,
+            "total": 5
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_001",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": true,
+              "category_allowed": true,
+              "difficulty_allowed": true,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 8,
+            "total_n": 8
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_001",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": true,
+              "mission_min_length": true,
+              "mission_max_length": true
+            },
+            "passed_n": 5,
+            "total_n": 5
+          },
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "case_id": "case_002",
+      "description": "긍정적 감정 + 중간 시간 — 성장/생산성 카테고리 기대",
+      "emotion_type": "긍정적",
+      "generated_mission": "새로운 기술을 배우기 위한 무료 온라인 강의 찾아보기",
+      "category": "성장",
+      "difficulty": "하",
+      "is_wildcard": false,
+      "retrieved_sources": [
+        "Positive_Psychology_Progress_Seligman.pdf (긍정 심리학)",
+        "Brief_Cognitive_Behavioral_Therapy_Guide.pdf (CBT(인지행동치료))",
+        "Benefits_of_Exercise_for_Clinically_Depressed_Craft_Perna.pdf (운동·정신건강)",
+        "Positive_Psychology_Progress_Seligman.pdf (긍정 심리학)",
+        "Positive_Psychology_Progress_Seligman.pdf (긍정 심리학)"
+      ],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_002",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_002",
+          "score": 0.0,
+          "passed": false,
+          "details": {
+            "claims": [
+              "무료 온라인 강의를 통해 새로운 기술을 배울 수 있다.",
+              "긍정 정서는 새로운 경험과 지식을 확장하는 데 도움을 준다.",
+              "새로운 기술 습득에 대한 흥미와 동기 부여가 증가할 수 있다.",
+              "성공적인 학습 경험은 긍정적 정서를 강화할 수 있다.",
+              "온라인 강의는 접근성이 높아 다양한 기술을 쉽게 배울 수 있는 기회를 제공한다."
+            ],
+            "verified": [
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "supported": 0,
+            "total": 5
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_002",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": true,
+              "category_allowed": true,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 7,
+            "total_n": 7
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_002",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": true,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "fruits_not_full": true,
+              "category_balance": true
+            },
+            "passed_n": 7,
+            "total_n": 7
+          },
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "case_id": "case_003",
+      "description": "집중됨 감정 + 긴 시간 — 생산성/성장 카테고리 기대",
+      "emotion_type": "집중됨",
+      "generated_mission": "45분간 집중하여 책 한 챕터 읽기",
+      "category": "성장",
+      "difficulty": "중",
+      "is_wildcard": false,
+      "retrieved_sources": [
+        "Investigating_the_Flow_Experience_Abuhamdeh.pdf (Flow 이론)",
+        "Investigating_the_Flow_Experience_Abuhamdeh.pdf (Flow 이론)",
+        "Investigating_the_Flow_Experience_Abuhamdeh.pdf (Flow 이론)",
+        "Investigating_the_Flow_Experience_Abuhamdeh.pdf (Flow 이론)",
+        "Investigating_the_Flow_Experience_Abuhamdeh.pdf (Flow 이론)"
+      ],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_003",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_003",
+          "score": 0.2,
+          "passed": false,
+          "details": {
+            "claims": [
+              "한 가지 작업에 대한 깊은 주의 집중이 필요하다.",
+              "독서는 지식 습득에 기여한다.",
+              "독서는 집중력을 강화하는 데 도움이 된다.",
+              "독서는 스트레스를 감소시키는 효과가 있다.",
+              "몰입 경험을 극대화할 수 있다."
+            ],
+            "verified": [
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "supported": 1,
+            "total": 5
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_003",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": true,
+              "category_allowed": true,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 7,
+            "total_n": 7
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_003",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": true,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "fruits_not_full": true,
+              "category_balance": true
+            },
+            "passed_n": 7,
+            "total_n": 7
+          },
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "case_id": "case_004",
+      "description": "지루함 감정 + 아주 짧은 시간 — 재미/돌발 기대, 콤보 규칙 포함",
+      "emotion_type": "지루함",
+      "generated_mission": "즉석에서 나비처럼 춤추기",
+      "category": "돌발",
+      "difficulty": "하",
+      "is_wildcard": true,
+      "retrieved_sources": [],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_004",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_004",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "컨텍스트 없음 (RAG 인덱스 비어있거나 돌발 미션)"
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_004",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": true,
+              "category_allowed": true,
+              "difficulty_allowed": true,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 8,
+            "total_n": 8
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_004",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": true,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "combo_no_change_on_wildcard": true
+            },
+            "passed_n": 6,
+            "total_n": 6
+          },
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "case_id": "case_005",
+      "description": "중립 감정 + 20분 — 복합 카테고리 허용, 열매 편향 방지 검사",
+      "emotion_type": "중립",
+      "generated_mission": "20분 동안 짧은 운동 루틴 진행하기",
+      "category": "건강",
+      "difficulty": "중",
+      "is_wildcard": false,
+      "retrieved_sources": [
+        "Benefits_of_Exercise_for_Clinically_Depressed_Craft_Perna.pdf (운동·정신건강)",
+        "Benefits_of_Exercise_for_Clinically_Depressed_Craft_Perna.pdf (운동·정신건강)",
+        "Benefits_of_Exercise_for_Clinically_Depressed_Craft_Perna.pdf (운동·정신건강)",
+        "Benefits_of_Exercise_for_Clinically_Depressed_Craft_Perna.pdf (운동·정신건강)",
+        "Brief_Cognitive_Behavioral_Therapy_Guide.pdf (CBT(인지행동치료))"
+      ],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_005",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_005",
+          "score": 0.2,
+          "passed": false,
+          "details": {
+            "claims": [
+              "운동은 자기 효능감을 향상시킨다.",
+              "운동은 긍정적인 결과를 가져올 수 있는 기회를 제공한다.",
+              "운동 후 기분이 좋아진다.",
+              "운동은 성취감을 느끼게 한다.",
+              "운동은 스트레스를 감소시키는 효과가 있다."
+            ],
+            "verified": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "supported": 1,
+            "total": 5
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_005",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": true,
+              "category_allowed": true,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 7,
+            "total_n": 7
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_005",
+          "score": 0.8571,
+          "passed": false,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": true,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "fruits_not_full": true,
+              "category_balance": false
+            },
+            "passed_n": 6,
+            "total_n": 7
+          },
+          "notes": "실패: category_balance"
+        }
+      ]
+    }
+  ]
+}

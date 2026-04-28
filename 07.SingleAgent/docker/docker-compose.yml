@@ -1,0 +1,40 @@
+services:
+  backend:
+    build:
+      context: ..                        # 07.SingleAgent 루트를 빌드 컨텍스트로
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../.env
+    environment:
+      - BLOOM_PDF_DIR=/app/pdfs
+      - BLOOM_CACHE_FILE=/app/data/.index_cache/sa_rag_index.json
+      - BLOOM_DATA_FILE=/app/data/.mission_data.json
+    volumes:
+      - ../../data:/app/pdfs:ro          # 심리학 논문 PDF (읽기 전용)
+      - ../data:/app/data                # 임베딩 캐시 + 미션 데이터 (읽기/쓰기)
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      start_period: 60s
+      retries: 3
+
+  frontend:
+    image: python:3.11-slim
+    working_dir: /app
+    command: >
+      sh -c "pip install --no-cache-dir -r requirements.txt &&
+             streamlit run app.py --server.port 8501 --server.address 0.0.0.0"
+    ports:
+      - "8501:8501"
+    volumes:
+      - ../frontend:/app
+    environment:
+      - BACKEND_URL=http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped

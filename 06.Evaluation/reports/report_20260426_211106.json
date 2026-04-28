@@ -1,0 +1,374 @@
+{
+  "generated_at": "2026-04-26T21:11:06.902670",
+  "summary": {
+    "retrieval": {
+      "mean": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "pass_rate": 1.0,
+      "n": 5
+    },
+    "faithfulness": {
+      "mean": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "pass_rate": 0.0,
+      "n": 5
+    },
+    "coverage": {
+      "mean": 0.7428,
+      "min": 0.5,
+      "max": 1.0,
+      "pass_rate": 0.6,
+      "n": 5
+    },
+    "rule": {
+      "mean": 0.739,
+      "min": 0.6,
+      "max": 0.8571,
+      "pass_rate": 1.0,
+      "n": 5
+    }
+  },
+  "cases": [
+    {
+      "case_id": "case_001",
+      "description": "부정적 감정 + 짧은 시간 — 건강/재미 카테고리 기대",
+      "emotion_type": "중립",
+      "generated_mission": "10분 동안 새로운 기술 관련 영상 시청하기",
+      "category": "성장",
+      "difficulty": "상",
+      "is_wildcard": false,
+      "retrieved_sources": [],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_001",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_001",
+          "score": 0.0,
+          "passed": false,
+          "details": {},
+          "notes": "컨텍스트 없음 (RAG 인덱스 비어있거나 돌발 미션)"
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_001",
+          "score": 0.5,
+          "passed": false,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": false,
+              "category_allowed": false,
+              "difficulty_allowed": false,
+              "time_feasible": false,
+              "category_matches_emotion": true
+            },
+            "passed_n": 4,
+            "total_n": 8
+          },
+          "notes": "실패: emotion_type_match, category_allowed, difficulty_allowed, time_feasible"
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_001",
+          "score": 0.6,
+          "passed": false,
+          "details": {
+            "checks": {
+              "time_within_limit": false,
+              "category_valid": true,
+              "difficulty_valid": false,
+              "mission_min_length": true,
+              "mission_max_length": true
+            },
+            "passed_n": 3,
+            "total_n": 5
+          },
+          "notes": "실패: time_within_limit, difficulty_valid"
+        }
+      ]
+    },
+    {
+      "case_id": "case_002",
+      "description": "긍정적 감정 + 중간 시간 — 성장/생산성 카테고리 기대",
+      "emotion_type": "중립",
+      "generated_mission": "새로운 기술에 관한 30분간 온라인 강의 듣기",
+      "category": "성장",
+      "difficulty": "중",
+      "is_wildcard": false,
+      "retrieved_sources": [],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_002",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_002",
+          "score": 0.0,
+          "passed": false,
+          "details": {},
+          "notes": "컨텍스트 없음 (RAG 인덱스 비어있거나 돌발 미션)"
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_002",
+          "score": 0.8571,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": false,
+              "category_allowed": true,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 6,
+            "total_n": 7
+          },
+          "notes": "실패: emotion_type_match"
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_002",
+          "score": 0.8571,
+          "passed": false,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": true,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "fruits_not_full": false,
+              "category_balance": true
+            },
+            "passed_n": 6,
+            "total_n": 7
+          },
+          "notes": "실패: fruits_not_full"
+        }
+      ]
+    },
+    {
+      "case_id": "case_003",
+      "description": "집중됨 감정 + 긴 시간 — 생산성/성장 카테고리 기대",
+      "emotion_type": "중립",
+      "generated_mission": "15분간 새로운 책의 한章 읽기",
+      "category": "성장",
+      "difficulty": "하",
+      "is_wildcard": false,
+      "retrieved_sources": [],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_003",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_003",
+          "score": 0.0,
+          "passed": false,
+          "details": {},
+          "notes": "컨텍스트 없음 (RAG 인덱스 비어있거나 돌발 미션)"
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_003",
+          "score": 0.8571,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": false,
+              "category_allowed": true,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 6,
+            "total_n": 7
+          },
+          "notes": "실패: emotion_type_match"
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_003",
+          "score": 0.7143,
+          "passed": false,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": false,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "fruits_not_full": false,
+              "category_balance": true
+            },
+            "passed_n": 5,
+            "total_n": 7
+          },
+          "notes": "실패: difficulty_valid, fruits_not_full"
+        }
+      ]
+    },
+    {
+      "case_id": "case_004",
+      "description": "지루함 감정 + 아주 짧은 시간 — 재미/돌발 기대, 콤보 규칙 포함",
+      "emotion_type": "중립",
+      "generated_mission": "5분간 자신의 목표를 적어보기",
+      "category": "성장",
+      "difficulty": "중",
+      "is_wildcard": false,
+      "retrieved_sources": [],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_004",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_004",
+          "score": 0.0,
+          "passed": false,
+          "details": {},
+          "notes": "컨텍스트 없음 (RAG 인덱스 비어있거나 돌발 미션)"
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_004",
+          "score": 0.5,
+          "passed": false,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": false,
+              "category_allowed": false,
+              "difficulty_allowed": false,
+              "time_feasible": false,
+              "category_matches_emotion": true
+            },
+            "passed_n": 4,
+            "total_n": 8
+          },
+          "notes": "실패: emotion_type_match, category_allowed, difficulty_allowed, time_feasible"
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_004",
+          "score": 0.6667,
+          "passed": false,
+          "details": {
+            "checks": {
+              "time_within_limit": false,
+              "category_valid": true,
+              "difficulty_valid": false,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "combo_no_change_on_wildcard": true
+            },
+            "passed_n": 4,
+            "total_n": 6
+          },
+          "notes": "실패: time_within_limit, difficulty_valid"
+        }
+      ]
+    },
+    {
+      "case_id": "case_005",
+      "description": "중립 감정 + 20분 — 복합 카테고리 허용, 열매 편향 방지 검사",
+      "emotion_type": "중립",
+      "generated_mission": "20분간 새로운 책의 한 챕터 읽기",
+      "category": "성장",
+      "difficulty": "하",
+      "is_wildcard": false,
+      "retrieved_sources": [],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_005",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_005",
+          "score": 0.0,
+          "passed": false,
+          "details": {},
+          "notes": "컨텍스트 없음 (RAG 인덱스 비어있거나 돌발 미션)"
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_005",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": true,
+              "category_allowed": true,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 7,
+            "total_n": 7
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_005",
+          "score": 0.8571,
+          "passed": false,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": true,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "fruits_not_full": false,
+              "category_balance": true
+            },
+            "passed_n": 6,
+            "total_n": 7
+          },
+          "notes": "실패: fruits_not_full"
+        }
+      ]
+    }
+  ]
+}

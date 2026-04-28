@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+venv/
+.venv/
+env/
+.env
+
+# Environment files (secrets)
+.env
+*.env
+**/.env
+
+# RAG index cache
+**/.index_cache/
+*.json.bak
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude internal
+.claude/
+
+# Large zip archives
+*.zip
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb

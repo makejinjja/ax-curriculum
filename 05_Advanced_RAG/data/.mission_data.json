@@ -1,0 +1,30 @@
+{
+  "fruits": [
+    {
+      "difficulty": "하",
+      "category": "성장",
+      "mission": "책 읽기",
+      "full_mission": "15분 동안 책 5페이지 읽기",
+      "timestamp": "2026-04-28 10:50",
+      "mood": "지침",
+      "time": "15분",
+      "emotion_type": "중립",
+      "effect": "새로운 지식 습득으로 인한 자신감 상승과 뇌 활성화.",
+      "success": true,
+      "memo": null
+    }
+  ],
+  "cards": [
+    {
+      "card": "햇살 카드",
+      "difficulty": "상"
+    }
+  ],
+  "last_category": "성장",
+  "combo_count": 1,
+  "mission_history": [
+    "15분간 짧은 명상 또는 호흡 연습하기",
+    "15분 동안 책 5페이지 읽기"
+  ],
+  "weak_paper_boost": []
+}

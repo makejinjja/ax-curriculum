@@ -1,0 +1,466 @@
+{
+  "generated_at": "2026-04-27T13:07:04.414319",
+  "summary": {
+    "retrieval": {
+      "mean": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "pass_rate": 1.0,
+      "n": 5
+    },
+    "faithfulness": {
+      "mean": 0.28,
+      "min": 0.0,
+      "max": 1.0,
+      "pass_rate": 0.2,
+      "n": 5
+    },
+    "coverage": {
+      "mean": 0.7643,
+      "min": 0.5,
+      "max": 0.8571,
+      "pass_rate": 0.8,
+      "n": 5
+    },
+    "rule": {
+      "mean": 0.8476,
+      "min": 0.6667,
+      "max": 1.0,
+      "pass_rate": 1.0,
+      "n": 5
+    }
+  },
+  "cases": [
+    {
+      "case_id": "case_001",
+      "description": "부정적 감정 + 짧은 시간 — 건강/재미 카테고리 기대",
+      "emotion_type": "중립",
+      "generated_mission": "원하는 주제로 10분간 자유롭게 글쓰기",
+      "category": "성장",
+      "difficulty": "하",
+      "is_wildcard": false,
+      "retrieved_sources": [
+        "Brief_Mindfulness_Intervention_Stress_Response.pdf (마음챙김)",
+        "Brief_Mindfulness_Intervention_Stress_Response.pdf (마음챙김)",
+        "Brief_Mindfulness_Intervention_Stress_Response.pdf (마음챙김)",
+        "Positive_Psychology_Progress_Seligman.pdf (긍정 심리학)",
+        "Emotion_Regulation_Gross_Process_Model.pdf (감정 조절 전략)"
+      ],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_001",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_001",
+          "score": 0.0,
+          "passed": false,
+          "details": {
+            "claims": [
+              "자율성과 자기효능감을 경험하도록 유도한다.",
+              "자유로운 글쓰기는 창의성을 향상시킨다.",
+              "자유로운 글쓰기는 자신감을 증가시킨다.",
+              "자유로운 글쓰기는 정신적 활력을 증가시킬 수 있다.",
+              "자기결정이론에 기반한 활동이다."
+            ],
+            "verified": [
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "supported": 0,
+            "total": 5
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_001",
+          "score": 0.75,
+          "passed": false,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": false,
+              "category_allowed": false,
+              "difficulty_allowed": true,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 6,
+            "total_n": 8
+          },
+          "notes": "실패: emotion_type_match, category_allowed"
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_001",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": true,
+              "mission_min_length": true,
+              "mission_max_length": true
+            },
+            "passed_n": 5,
+            "total_n": 5
+          },
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "case_id": "case_002",
+      "description": "긍정적 감정 + 중간 시간 — 성장/생산성 카테고리 기대",
+      "emotion_type": "중립",
+      "generated_mission": "새로운 스킬을 30분간 온라인 강의 듣기",
+      "category": "성장",
+      "difficulty": "중",
+      "is_wildcard": false,
+      "retrieved_sources": [
+        "Emotion_Regulation_and_Sleep_Vandekerckhove.pdf (수면·감정조절)",
+        "Emotion_Regulation_and_Sleep_Vandekerckhove.pdf (수면·감정조절)",
+        "Benefits_of_Exercise_for_Clinically_Depressed_Craft_Perna.pdf (운동·정신건강)",
+        "Adolescent_Behavioral_Activation_Program.pdf (행동 활성화 1)",
+        "Benefits_of_Exercise_for_Clinically_Depressed_Craft_Perna.pdf (운동·정신건강)"
+      ],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_002",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_002",
+          "score": 0.0,
+          "passed": false,
+          "details": {
+            "claims": [
+              "새로운 기술을 배우는 것은 자율성과 유능감을 증진시킨다.",
+              "자기결정이론(SDT)은 개인의 동기를 높이는 요소로 자율성과 유능감을 강조한다.",
+              "새로운 스킬을 배우면 자신감이 증가할 수 있다.",
+              "새로운 스킬은 생산성을 향상시킬 수 있다.",
+              "새로운 스킬 습득은 전반적인 웰빙에 긍정적인 영향을 미칠 수 있다."
+            ],
+            "verified": [
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "supported": 0,
+            "total": 5
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_002",
+          "score": 0.8571,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": false,
+              "category_allowed": true,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 6,
+            "total_n": 7
+          },
+          "notes": "실패: emotion_type_match"
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_002",
+          "score": 0.8571,
+          "passed": false,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": true,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "fruits_not_full": false,
+              "category_balance": true
+            },
+            "passed_n": 6,
+            "total_n": 7
+          },
+          "notes": "실패: fruits_not_full"
+        }
+      ]
+    },
+    {
+      "case_id": "case_003",
+      "description": "집중됨 감정 + 긴 시간 — 생산성/성장 카테고리 기대",
+      "emotion_type": "중립",
+      "generated_mission": "새로운 기술이나 취미를 30분간 배우기",
+      "category": "성장",
+      "difficulty": "중",
+      "is_wildcard": false,
+      "retrieved_sources": [
+        "Emotion_Regulation_and_Sleep_Vandekerckhove.pdf (수면·감정조절)",
+        "Emotion_Regulation_and_Sleep_Vandekerckhove.pdf (수면·감정조절)",
+        "Adolescent_Behavioral_Activation_Program.pdf (행동 활성화 1)",
+        "Emotion_Regulation_and_Sleep_Vandekerckhove.pdf (수면·감정조절)",
+        "Adolescent_Behavioral_Activation_Program.pdf (행동 활성화 1)"
+      ],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_003",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_003",
+          "score": 0.0,
+          "passed": false,
+          "details": {
+            "claims": [
+              "자율성과 유능감의 경험은 내재적 동기를 증진시킨다.",
+              "새로운 것을 배우는 과정에서 성취감이 향상된다.",
+              "새로운 것을 배우는 과정에서 자존감이 향상된다.",
+              "새로운 기술이나 취미를 배우는 것은 심리적 웰빙을 증가시킨다.",
+              "30분간 배우는 활동은 긍정적인 심리적 효과를 가져온다."
+            ],
+            "verified": [
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "supported": 0,
+            "total": 5
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_003",
+          "score": 0.8571,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": false,
+              "category_allowed": true,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 6,
+            "total_n": 7
+          },
+          "notes": "실패: emotion_type_match"
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_003",
+          "score": 0.8571,
+          "passed": false,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": true,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "fruits_not_full": false,
+              "category_balance": true
+            },
+            "passed_n": 6,
+            "total_n": 7
+          },
+          "notes": "실패: fruits_not_full"
+        }
+      ]
+    },
+    {
+      "case_id": "case_004",
+      "description": "지루함 감정 + 아주 짧은 시간 — 재미/돌발 기대, 콤보 규칙 포함",
+      "emotion_type": "중립",
+      "generated_mission": "오늘의 목표를 5분간 적어보기",
+      "category": "성장",
+      "difficulty": "중",
+      "is_wildcard": false,
+      "retrieved_sources": [
+        "Adolescent_Behavioral_Activation_Program.pdf (행동 활성화 1)",
+        "Adolescent_Behavioral_Activation_Program.pdf (행동 활성화 1)",
+        "Brief_Cognitive_Behavioral_Therapy_Guide.pdf (CBT(인지행동치료))",
+        "Brief_Cognitive_Behavioral_Therapy_Guide.pdf (CBT(인지행동치료))",
+        "Adolescent_Behavioral_Activation_Program.pdf (행동 활성화 1)"
+      ],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_004",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_004",
+          "score": 0.4,
+          "passed": false,
+          "details": {
+            "claims": [
+              "목표 설정은 자율성과 유능감을 증진시킨다.",
+              "자율성과 유능감은 자기 동기를 강화한다.",
+              "목표를 명확히 하면 자신감이 상승한다.",
+              "명확한 목표는 행동에 대한 동기부여를 강화한다.",
+              "자기결정이론은 목표 설정의 중요성을 설명한다."
+            ],
+            "verified": [
+              true,
+              false,
+              false,
+              true,
+              false
+            ],
+            "supported": 2,
+            "total": 5
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_004",
+          "score": 0.5,
+          "passed": false,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": false,
+              "category_allowed": false,
+              "difficulty_allowed": false,
+              "time_feasible": false,
+              "category_matches_emotion": true
+            },
+            "passed_n": 4,
+            "total_n": 8
+          },
+          "notes": "실패: emotion_type_match, category_allowed, difficulty_allowed, time_feasible"
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_004",
+          "score": 0.6667,
+          "passed": false,
+          "details": {
+            "checks": {
+              "time_within_limit": false,
+              "category_valid": true,
+              "difficulty_valid": false,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "combo_no_change_on_wildcard": true
+            },
+            "passed_n": 4,
+            "total_n": 6
+          },
+          "notes": "실패: time_within_limit, difficulty_valid"
+        }
+      ]
+    },
+    {
+      "case_id": "case_005",
+      "description": "중립 감정 + 20분 — 복합 카테고리 허용, 열매 편향 방지 검사",
+      "emotion_type": "중립",
+      "generated_mission": "주머니에 있는 물건 3개 꺼내보기",
+      "category": "돌발",
+      "difficulty": "하",
+      "is_wildcard": true,
+      "retrieved_sources": [],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_005",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_005",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "컨텍스트 없음 (RAG 인덱스 비어있거나 돌발 미션)"
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_005",
+          "score": 0.8571,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": true,
+              "category_allowed": false,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 6,
+            "total_n": 7
+          },
+          "notes": "실패: category_allowed"
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_005",
+          "score": 0.8571,
+          "passed": false,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": true,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "fruits_not_full": false,
+              "category_balance": true
+            },
+            "passed_n": 6,
+            "total_n": 7
+          },
+          "notes": "실패: fruits_not_full"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,490 @@
+{
+  "generated_at": "2026-04-28T15:04:22.943452",
+  "target": "08.MultiAgent",
+  "summary": {
+    "retrieval": {
+      "mean": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "pass_rate": 1.0,
+      "n": 5
+    },
+    "faithfulness": {
+      "mean": 0.32,
+      "min": 0.0,
+      "max": 0.6,
+      "pass_rate": 0.4,
+      "n": 5
+    },
+    "coverage": {
+      "mean": 0.9714,
+      "min": 0.8571,
+      "max": 1.0,
+      "pass_rate": 1.0,
+      "n": 5
+    },
+    "rule": {
+      "mean": 0.8857,
+      "min": 0.7143,
+      "max": 1.0,
+      "pass_rate": 1.0,
+      "n": 5
+    }
+  },
+  "cases": [
+    {
+      "case_id": "case_001",
+      "description": "부정적 감정 + 짧은 시간 — 건강/재미 카테고리 기대",
+      "emotion_type": "부정적",
+      "generated_mission": "10분간 가벼운 스트레칭 하기",
+      "category": "건강",
+      "difficulty": "하",
+      "is_wildcard": false,
+      "retrieved_sources": [
+        "Adolescent_Behavioral_Activation_Program.pdf (행동 활성화 1)",
+        "Brief_Cognitive_Behavioral_Therapy_Guide.pdf (CBT(인지행동치료))",
+        "Brief_Cognitive_Behavioral_Therapy_Guide.pdf (CBT(인지행동치료))",
+        "Brief_Cognitive_Behavioral_Therapy_Guide.pdf (CBT(인지행동치료))",
+        "Brief_Cognitive_Behavioral_Therapy_Guide.pdf (CBT(인지행동치료))"
+      ],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_001",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_001",
+          "score": 0.4,
+          "passed": false,
+          "details": {
+            "claims": [
+              "행동 활성화 기법은 신체 활동을 포함한 행동을 촉진하여 우울한 기분을 개선하는 데 효과적이다.",
+              "운동은 주의 분산 가설에 따라 걱정과 우울한 생각에서 벗어나게 해준다.",
+              "가벼운 운동 및 스트레칭은 기분을 개선하는 데 도움을 준다.",
+              "가벼운 운동 및 스트레칭은 우울 증상을 줄이는 데 효과적이다.",
+              "신체적 활동은 긍정적인 감정으로 연결된다는 연구 결과가 있다."
+            ],
+            "verified": [
+              true,
+              false,
+              false,
+              false,
+              true
+            ],
+            "supported": 2,
+            "total": 5
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_001",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": true,
+              "category_allowed": true,
+              "difficulty_allowed": true,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 8,
+            "total_n": 8
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_001",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": true,
+              "mission_min_length": true,
+              "mission_max_length": true
+            },
+            "passed_n": 5,
+            "total_n": 5
+          },
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "case_id": "case_002",
+      "description": "긍정적 감정 + 중간 시간 — 성장/생산성 카테고리 기대",
+      "emotion_type": "긍정적",
+      "generated_mission": "오늘 배운 것 중 하나를 다른 사람에게 가르쳐보기",
+      "category": "성장",
+      "difficulty": "최상",
+      "is_wildcard": false,
+      "retrieved_sources": [
+        "Positive_Psychology_Progress_Seligman.pdf (긍정 심리학)",
+        "Positive_Psychology_Progress_Seligman.pdf (긍정 심리학)",
+        "Positive_Psychology_Progress_Seligman.pdf (긍정 심리학)",
+        "Benefits_of_Exercise_for_Clinically_Depressed_Craft_Perna.pdf (운동·정신건강)",
+        "Positive_Emotions_Broaden_and_Build_Fredrickson.pdf (긍정 정서 확장)"
+      ],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_002",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_002",
+          "score": 0.0,
+          "passed": false,
+          "details": {
+            "claims": [
+              "긍정 정서 확장은 새로운 경험과 관계를 통해 개인의 자원을 구축하는 이론이다.",
+              "다른 사람에게 지식을 전달하는 과정에서 긍정적인 정서를 증진시킬 수 있다.",
+              "다른 사람에게 지식을 가르치면 자신이 더 깊이 이해하게 된다.",
+              "정서적으로 긍정적인 경험이 증가하면 개인의 사회적 자원과 지식이 확장된다.",
+              "이런 활동은 신뢰도와 관계를 강화하는 효과를 보인다."
+            ],
+            "verified": [
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "supported": 0,
+            "total": 5
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_002",
+          "score": 0.8571,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": true,
+              "category_allowed": true,
+              "time_feasible": false,
+              "category_matches_emotion": true
+            },
+            "passed_n": 6,
+            "total_n": 7
+          },
+          "notes": "실패: time_feasible"
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_002",
+          "score": 0.7143,
+          "passed": false,
+          "details": {
+            "checks": {
+              "time_within_limit": false,
+              "category_valid": true,
+              "difficulty_valid": false,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "fruits_not_full": true,
+              "category_balance": true
+            },
+            "passed_n": 5,
+            "total_n": 7
+          },
+          "notes": "실패: time_within_limit, difficulty_valid"
+        }
+      ]
+    },
+    {
+      "case_id": "case_003",
+      "description": "집중됨 감정 + 긴 시간 — 생산성/성장 카테고리 기대",
+      "emotion_type": "집중됨",
+      "generated_mission": "45분 동안 깊이 있는 독서하기",
+      "category": "성장",
+      "difficulty": "하",
+      "is_wildcard": false,
+      "retrieved_sources": [
+        "Investigating_the_Flow_Experience_Abuhamdeh.pdf (Flow 이론)",
+        "Investigating_the_Flow_Experience_Abuhamdeh.pdf (Flow 이론)",
+        "Investigating_the_Flow_Experience_Abuhamdeh.pdf (Flow 이론)",
+        "Investigating_the_Flow_Experience_Abuhamdeh.pdf (Flow 이론)",
+        "Investigating_the_Flow_Experience_Abuhamdeh.pdf (Flow 이론)"
+      ],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_003",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_003",
+          "score": 0.6,
+          "passed": true,
+          "details": {
+            "claims": [
+              "이 미션은 'Flow 이론'의 'Task Involvement' 개념을 반영한다.",
+              "집중력과 흥미를 유지하는 활동이 몰입 경험을 증진시킨다.",
+              "흥미를 느끼며 몰입할 때 기억력이 향상된다.",
+              "몰입 경험은 창의적 문제 해결 능력을 향상시킨다.",
+              "몰입은 긍정적인 정서 상태와 연결된다."
+            ],
+            "verified": [
+              true,
+              true,
+              false,
+              false,
+              true
+            ],
+            "supported": 3,
+            "total": 5
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_003",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": true,
+              "category_allowed": true,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 7,
+            "total_n": 7
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_003",
+          "score": 0.8571,
+          "passed": false,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": false,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "fruits_not_full": true,
+              "category_balance": true
+            },
+            "passed_n": 6,
+            "total_n": 7
+          },
+          "notes": "실패: difficulty_valid"
+        }
+      ]
+    },
+    {
+      "case_id": "case_004",
+      "description": "지루함 감정 + 아주 짧은 시간 — 재미/돌발 기대, 콤보 규칙 포함",
+      "emotion_type": "지루함",
+      "generated_mission": "주변 사물 중 하나를 색깔별로 정리해보기",
+      "category": "재미",
+      "difficulty": "하",
+      "is_wildcard": false,
+      "retrieved_sources": [
+        "Adolescent_Behavioral_Activation_Program.pdf (행동 활성화 1)",
+        "Behavioral_Activation_Guided_Practice.pdf (행동 활성화 2)",
+        "Behavioral_Activation_Guided_Practice.pdf (행동 활성화 2)",
+        "Adolescent_Behavioral_Activation_Program.pdf (행동 활성화 1)",
+        "Brief_Cognitive_Behavioral_Therapy_Guide.pdf (CBT(인지행동치료))"
+      ],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_004",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_004",
+          "score": 0.6,
+          "passed": true,
+          "details": {
+            "claims": [
+              "주변 사물을 색깔별로 정리하는 행동은 긍정적인 감정을 유도할 수 있다.",
+              "긍정 정서 확장 이론에 따르면, 간단한 행동 변화가 기분 전환에 도움을 준다.",
+              "연구에 따르면, 간단한 행동이 긍정적인 감정을 증가시킨다.",
+              "긍정적인 감정은 심리적 안정성을 개선할 수 있다.",
+              "긍정적인 감정은 사회적 상호작용을 개선할 수 있다."
+            ],
+            "verified": [
+              false,
+              false,
+              true,
+              true,
+              true
+            ],
+            "supported": 3,
+            "total": 5
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_004",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": true,
+              "category_allowed": true,
+              "difficulty_allowed": true,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 8,
+            "total_n": 8
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_004",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": true,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "combo_no_change_on_wildcard": true
+            },
+            "passed_n": 6,
+            "total_n": 6
+          },
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "case_id": "case_005",
+      "description": "중립 감정 + 20분 — 복합 카테고리 허용, 열매 편향 방지 검사",
+      "emotion_type": "중립",
+      "generated_mission": "집중할 수 있는 책 20페이지 읽기",
+      "category": "성장",
+      "difficulty": "중",
+      "is_wildcard": false,
+      "retrieved_sources": [
+        "Benefits_of_Exercise_for_Clinically_Depressed_Craft_Perna.pdf (운동·정신건강)",
+        "Benefits_of_Exercise_for_Clinically_Depressed_Craft_Perna.pdf (운동·정신건강)",
+        "Benefits_of_Exercise_for_Clinically_Depressed_Craft_Perna.pdf (운동·정신건강)",
+        "Emotion_Regulation_Gross_Process_Model.pdf (감정 조절 전략)",
+        "Adolescent_Behavioral_Activation_Program.pdf (행동 활성화 1)"
+      ],
+      "eval_results": [
+        {
+          "evaluator": "retrieval",
+          "case_id": "case_005",
+          "score": 1.0,
+          "passed": true,
+          "details": {},
+          "notes": "relevant_doc_ids 없음 — 스킵"
+        },
+        {
+          "evaluator": "faithfulness",
+          "case_id": "case_005",
+          "score": 0.0,
+          "passed": false,
+          "details": {
+            "claims": [
+              "이 미션은 '몰입 경험(Flow 경험)'을 촉진하기 위해 설계되었다.",
+              "독서라는 목표 지향적 활동은 자기 주도적 참여를 증진시킨다.",
+              "독서는 내재적 동기를 증진시킨다.",
+              "몰입 상태에 있으면 개인의 작업 참여도가 높아진다.",
+              "몰입 경험은 목표 달성에 대한 만족감을 증가시킨다."
+            ],
+            "verified": [
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "supported": 0,
+            "total": 5
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "coverage",
+          "case_id": "case_005",
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "checks": {
+              "mission_nonempty": true,
+              "basis_nonempty": true,
+              "effect_nonempty": true,
+              "emotion_type_match": true,
+              "category_allowed": true,
+              "time_feasible": true,
+              "category_matches_emotion": true
+            },
+            "passed_n": 7,
+            "total_n": 7
+          },
+          "notes": ""
+        },
+        {
+          "evaluator": "rule",
+          "case_id": "case_005",
+          "score": 0.8571,
+          "passed": false,
+          "details": {
+            "checks": {
+              "time_within_limit": true,
+              "category_valid": true,
+              "difficulty_valid": true,
+              "mission_min_length": true,
+              "mission_max_length": true,
+              "fruits_not_full": true,
+              "category_balance": false
+            },
+            "passed_n": 6,
+            "total_n": 7
+          },
+          "notes": "실패: category_balance"
+        }
+      ]
+    }
+  ]
+}
